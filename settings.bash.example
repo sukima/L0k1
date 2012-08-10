@@ -8,3 +8,4 @@ sshTunnelArgs="-R2222:localhost:22"
 sshTunnelHost="homemachine.dyndns.org"
 sshTunnelPort=22
 tunnelWaitTime=120
+logFile="L0k1.log"
