@@ -1,8 +1,8 @@
 #!/bin/bash
-source lib/random.sh
+source lib/random.bash
 
 # Settings
-source settings.sh
+source settings.bash
 
 # tell the server we are no longer running
 trap "{ curl \"${url}?poll=0\" > /dev/null ; exit 255; }" EXIT
