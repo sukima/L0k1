@@ -51,10 +51,11 @@ $gaResult = "";
 // save();
 
 if ( ! empty($_GET['poll']) ) {
-  // Confuse the date stamp by changing the day (don't touch minutes)
   $poll = intval($_GET['poll']);
   if ($poll != 0) {
-    $settings['pollTime'] = ( time() + $poll ) - ( rand(5, 32767) * 60 * 60 ) - ( rand(0, 60) * 60);
+    // Confuse the date stamp by changing the day and hour (don't touch minutes)
+    // $settings['pollTime'] = ( time() + $poll );
+    $settings['pollTime'] = ( time() + $poll ) - ( rand(5, 32767) * 60 * 60 );
   } else {
     $settings['pollTime'] = 0;
   }
@@ -106,7 +107,7 @@ if ( ! empty($_GET['poll']) ) {
         echo <<<EOF
 <form method="GET" action="${_SERVER['SCRIPT_NAME']}">
 <input type="text" name="ga" value="" />
-<input type="submit" name="queue" />
+<input type="submit" name="queue" value="Queue Next" />
 </form>
 EOF;
       }
