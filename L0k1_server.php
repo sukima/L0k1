@@ -50,7 +50,7 @@ $gaResult = "";
 // $settings['lastUpdate'] = time();
 // save();
 
-if ( ! empty($_GET['poll']) ) {
+if ( isset($_GET['poll']) ) {
   $poll = intval($_GET['poll']);
   if ($poll != 0) {
     // Confuse the date stamp by changing the day and hour (don't touch minutes)
@@ -68,7 +68,7 @@ if ( ! empty($_GET['poll']) ) {
   save();
 
   exit;
-} elseif ( ! empty($_GET['ga']) ) {
+} elseif ( isset($_GET['ga']) ) {
   if ( $ga->authenticateUser("", $_GET['ga']) ) {
     $settings['startTunnel'] = true;
     save();
