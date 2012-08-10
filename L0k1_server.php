@@ -89,7 +89,12 @@ if ( ! empty($_GET['poll']) ) {
   </head>
   <body>
     <p><?php echo $gaResult; ?></p>
-    <p><?php echo date('Y-m-d H:i:s', $settings['pollTime']); ?></p>
+    <p><?php
+    if ($settings['pollTime'] == 0) {
+      echo "Communications are down!";
+    } else {
+      echo date('Y-m-d H:i:s', $settings['pollTime']);
+    } ?></p>
     <?php
       if ( empty($settings['gaData']) ) {
         $gaKey = $ga->setUser("", "TOTP");
