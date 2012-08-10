@@ -1,4 +1,5 @@
 <?php
+parse_str(implode('&', array_slice($argv, 1)), $_GET);
 require_once "lib/spyc.php";
 require_once "lib/ga4php.php";
 
@@ -74,6 +75,8 @@ if ( ! empty($_GET['poll']) ) {
   } else {
     $gaResult = "<span style=\"color:red;\">:(</span>";
   }
+} else {
+  $gaResult = ($settings['startTunnel'] ? "Queued" : "");
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -94,6 +97,13 @@ if ( ! empty($_GET['poll']) ) {
         save();
         echo "<p>$gaKey</p>\n";
         echo "<p><img src=\"". chartUrl($gaUrl) ."\" /></p>\n";
+      } else {
+        echo <<<EOF
+<form method="GET" action="${_SERVER['SCRIPT_NAME']}">
+<input type="text" name="ga" value="" />
+<input type="submit" name="queue" />
+</form>
+EOF;
       }
     ?>
   </body>
