@@ -1,5 +1,5 @@
 <?php
-parse_str(implode('&', array_slice($argv, 1)), $_GET);
+#parse_str(implode('&', array_slice($argv, 1)), $_GET);
 require_once "lib/spyc.php";
 require_once "lib/ga4php.php";
 
