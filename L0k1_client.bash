@@ -35,7 +35,7 @@ while true; do
   if curl -s "${url}?poll=${pollingIterval}" | grep "tunnel:true" >/dev/null 2>&1; then
     echo "$(date): Tunnel requested" >> ${logFile}
     # Check if tunnel already running
-    if $(ps ax ${pid}) | grep -q -v "ssh"; then
+    if ps ax ${pid} | grep -q -v "ssh"; then
       # start tunnel
       ssh -f -N ${sshTunnelArgs} -p ${sshTunnelPort} ${sshTunnelHost} "sleep ${tunnelWaitTime}" >/dev/null 2>&1 &
       pid=$!
