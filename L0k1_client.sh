@@ -1,17 +1,8 @@
 #!/bin/bash
 source lib/random.sh
 
-
-minPollingMinutes=5
-maxPollingMinutes=15
-minBiasPollingMinutes=8
-maxBiasPollingMinutes=12
-biasPercentage=70
-url="http://tritarget.dyndns.org:8993/L0k1_server.php"
-sshTunnelArgs="-R2222:localhost:20"
-sshTunnelHost="tritarget.dyndns.org"
-sshTunnelPort=22
-tunnelWaitTime=120
+# Settings
+source settings.sh
 
 # tell the server we are no longer running
 trap "{ curl \"${url}?poll=0\" > /dev/null ; exit 255; }" EXIT

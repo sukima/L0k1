@@ -1,0 +1,10 @@
+minPollingMinutes=5
+maxPollingMinutes=15
+minBiasPollingMinutes=8
+maxBiasPollingMinutes=12
+biasPercentage=70
+url="http://example.com/L0k1_server.php"
+sshTunnelArgs="-R2222:localhost:22"
+sshTunnelHost="homemachine.dyndns.org"
+sshTunnelPort=22
+tunnelWaitTime=120
