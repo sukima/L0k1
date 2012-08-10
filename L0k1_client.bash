@@ -5,7 +5,7 @@ source lib/random.bash
 source settings.bash
 
 # tell the server we are no longer running
-trap "{ curl \"${url}?poll=0\" > /dev/null ; exit 255; }" EXIT
+trap "{ curl -s \"${url}?poll=0\" > /dev/null ; exit 255; }" EXIT
 
 while true; do
   # Get bias percentile
@@ -24,7 +24,7 @@ while true; do
   pollingIterval=$((randomBetweenAnswer*60))
 
   # Send pollingIterval to server and examine response if tunnel should start
-  if $(curl "${url}?poll=${pollingIterval}") | grep -q "tunnel:true"; then
+  if $(curl -s "${url}?poll=${pollingIterval}") | grep "tunnel:true" >/dev/null 2>&1; then
     # Check if tunnel already running
     if $(ps ax ${pid}) | grep -q -v "ssh"; then
       # start tunnel
