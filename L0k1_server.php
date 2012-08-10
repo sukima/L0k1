@@ -12,6 +12,15 @@ function save() {
   fclose($fd);
 }
 
+function chartUrl($url) {
+  $baseUrl = "https://chart.googleapis.com/chart";
+  $chs = "200x200";
+  $cht = "qr";
+  $chl = urlencode($url);
+
+  return "${baseUrl}?chs=${chs}&cht=${cht}&chl=${chl}";
+}
+
 class MyGoogleAuth extends GoogleAuthenticator {
   function getData($user) {
     global $settings;
@@ -80,11 +89,11 @@ if ( ! empty($_GET['poll']) ) {
     <p><?php echo date('Y-m-d H:i:s', $settings['pollTime']); ?></p>
     <?php
       if ( empty($settings['gaData']) ) {
-        $gaKey = $ga->setUser("x");
-        $gaUrl = $ga->createUrl("x");
+        $gaKey = $ga->setUser("", "TOTP");
+        $gaUrl = $ga->createUrl("h4x0r@L0k1");
         save();
         echo "<p>$gaKey</p>\n";
-        echo "<p><img src=\"$gaUrl\" /></p>\n";
+        echo "<p><img src=\"". chartUrl($gaUrl) ."\" /></p>\n";
       }
     ?>
   </body>
