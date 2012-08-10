@@ -60,7 +60,7 @@ if ( isset($_GET['poll']) ) {
     $settings['pollTime'] = 0;
   }
 
-  header("Content-type", "text/plain");
+  header('Content-type: text/plain');
   echo "tunnel:". ($settings['startTunnel'] ? "true" : "false");
 
   $settings['startTunnel'] = false;
