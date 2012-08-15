@@ -8,4 +8,7 @@ sshTunnelArgs="-R2222:localhost:22"
 sshTunnelHost="homemachine.dyndns.org"
 sshTunnelPort=22
 tunnelWaitTime=120
+# set to "-" to have it output to STDOUT
 logFile="L0k1.log"
+# 0: off, 1: error, 2: warn, 3: info, 4: debug, 5: debug2
+logLevel=3
